@@ -23,11 +23,22 @@ public class Gun : MonoBehaviour
     private AudioSource source;
     private GunAnimation anim;
     private MuzzleFlash flash;
+    
+    public int ammoCapacity;//弹匣容量
+    public int currentAmmoBullets; //当前弹匣内子弹数
+    public int remainBullets;//剩余子弹数
+    private AnimationState state;
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
         anim = GetComponent<GunAnimation>();
+        //state = anim.anim[anim.fireAnimName];
+        //state.speed = 10;
         flash = firePoint.GetComponent<MuzzleFlash>();
+        ammoCapacity = 30;
+        currentAmmoBullets = 30;
+        remainBullets = 3000;
     }
      
     //发射子弹
@@ -37,7 +48,7 @@ public class Gun : MonoBehaviour
     {
         //判定能否发射子弹(弹匣子弹数     攻击动画是否播放)
         if (!Ready()) return false;
-
+        
         //如果可以发射子弹
         //1.创建子弹（创建谁？在哪？旋转？）
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir)) as GameObject;
@@ -55,11 +66,7 @@ public class Gun : MonoBehaviour
 
         return true;
     }
-     
-   public int ammoCapacity;//弹匣容量
-   public int currentAmmoBullets; //当前弹匣内子弹数
-   public int remainBullets;//剩余子弹数
-
+    
     //准备发射子弹
     private bool Ready()
     {
@@ -68,8 +75,8 @@ public class Gun : MonoBehaviour
         currentAmmoBullets--;
 
         //如果弹匣没有子弹  则 播放缺少子弹动画
-        if (currentAmmoBullets == 0)
-            anim.PlayQueued(anim.lackBulletAnimName);
+        //if (currentAmmoBullets == 0)
+            //anim.PlayQueued(anim.lackBulletAnimName);
 
         return true;
     }

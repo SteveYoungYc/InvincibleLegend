@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
 /// <summary>
@@ -23,8 +24,8 @@ public class GunAnimation : MonoBehaviour
 
     //建议：提取EnemyAnimation 与 当前类的共有行为。
     //播放动画
-    private Animation anim;
-    private void Start()
+    public Animation anim;
+    private void Awake()
     {
         //查找动画组件
         anim = GetComponentInChildren<Animation>();
