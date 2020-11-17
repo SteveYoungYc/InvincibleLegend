@@ -5,17 +5,16 @@ using System.Collections;
 /// <summary>
 /// 枪动画
 /// </summary>
-public class GunAnimation : MonoBehaviour
-{
+public class GunAnimation : MonoBehaviour {
     /// <summary>
     /// 开枪
     /// </summary> 
-    public string fireAnimName="PlayerGun01_Fire"; 
+    public string fireAnimName = "PlayerGun01_Fire";
 
     /// <summary>
     /// 更换弹匣 
     /// </summary> 
-    public string updateAnimName="PlayerGun01_UpdateAmmo";
+    public string updateAnimName = "PlayerGun01_UpdateAmmo";
 
     /// <summary>
     /// 缺少子弹
@@ -25,8 +24,8 @@ public class GunAnimation : MonoBehaviour
     //建议：提取EnemyAnimation 与 当前类的共有行为。
     //播放动画
     public Animation anim;
-    private void Awake()
-    {
+
+    private void Awake() {
         //查找动画组件
         anim = GetComponentInChildren<Animation>();
     }
@@ -35,14 +34,12 @@ public class GunAnimation : MonoBehaviour
     /// 播放指定名称的动画片段
     /// </summary>
     /// <param name="animName">动画名称</param>
-    public void Play(string animName)
-    { 
+    public void Play(string animName) {
         if (anim != null && !string.IsNullOrEmpty(animName))
-            anim.CrossFade(animName); 
+            anim.CrossFade(animName);
     }
 
-    public void PlayQueued(string animName)
-    {
+    public void PlayQueued(string animName) {
         if (anim != null && !string.IsNullOrEmpty(animName))
             anim.PlayQueued(animName);
     }
@@ -52,8 +49,7 @@ public class GunAnimation : MonoBehaviour
     /// </summary>
     /// <param name="animName">动画名称</param>
     /// <returns></returns>
-    public bool IsPlaying(string animName)
-    {
+    public bool IsPlaying(string animName) {
         if (anim != null && !string.IsNullOrEmpty(animName))
             return anim.IsPlaying(animName);
 

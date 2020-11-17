@@ -4,8 +4,7 @@ using System.Collections;
 /// <summary>
 /// 敌人状态信息类
 /// </summary>
-public class EnemyStatusInfo : MonoBehaviour
-{
+public class EnemyStatusInfo : MonoBehaviour {
     /// <summary>
     /// 当前血量
     /// </summary>
@@ -16,8 +15,7 @@ public class EnemyStatusInfo : MonoBehaviour
     /// </summary>
     public float maxHP;
 
-    public void Damage(float amount)
-    {
+    public void Damage(float amount) {
         //如果敌人已经死亡 则退出(防止虐尸)
         if (currentHP <= 0) return;
 
@@ -38,8 +36,7 @@ public class EnemyStatusInfo : MonoBehaviour
     /// <summary>
     /// 死亡
     /// </summary>
-    public void Death()
-    {
+    public void Death() {
         //销毁当前游戏物体
         Destroy(gameObject, deathDelay);
 

@@ -281,9 +281,6 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>E:/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
- </Reference>
  <Reference Include="JMOAssets">
  <HintPath>D:/Unity/Month01/InvincibleLegend/InvincibleLegend/Assets/Effects/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>

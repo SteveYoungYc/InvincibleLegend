@@ -21,12 +21,13 @@ public class EnemySpawn : MonoBehaviour {
 
     //计算路线
     private WayLine[] lines;
+
     private void CalculateWayLines() {
         //WayLine 路线  与 子物体   对应
         //lines[0].Points 该路线所有路点坐标   与  子物体的子物体.Position对应
         lines = new WayLine[transform.childCount];
         //创建路线
-        for (int i = 0; i < lines.Length; i++)//0    1     2
+        for (int i = 0; i < lines.Length; i++) //0    1     2
         {
             Transform waylineTF = transform.GetChild(i);
             lines[i] = new WayLine(waylineTF.childCount);
@@ -39,6 +40,7 @@ public class EnemySpawn : MonoBehaviour {
 
     //当前产生的敌人数量
     private int spawnedCount;
+
     /// <summary>
     /// 可以产生敌人的最大值
     /// </summary>
@@ -81,6 +83,7 @@ public class EnemySpawn : MonoBehaviour {
             if (!item.IsUsable)
                 return false;
         }
+
         return true;
     }
 
@@ -93,10 +96,11 @@ public class EnemySpawn : MonoBehaviour {
         //创建一个敌人
         //GameObject enemyGO = Instantiate(敌人预制件, 第一个路点, Quaternion.identity) as GameObject;
         int enemyTypeIndex = Random.Range(0, enemyTypes.Length);
-        GameObject enemyGO = Instantiate(enemyTypes[enemyTypeIndex], wayLine.Points[0], Quaternion.identity) as GameObject;
+        GameObject enemyGO =
+            Instantiate(enemyTypes[enemyTypeIndex], wayLine.Points[0], Quaternion.identity) as GameObject;
         //传递信息
         enemyGO.GetComponent<EnemyMotor>().wayline = wayLine;
-        wayLine.IsUsable = false;//该路线不可用
+        wayLine.IsUsable = false; //该路线不可用
         //传递当前生成器对象引用，便于敌人死亡时调用当前对象的生成敌人方法
         //[建议使用委托代替]
         enemyGO.GetComponent<EnemyStatusInfo>().spawn = this;
@@ -107,6 +111,7 @@ public class EnemySpawn : MonoBehaviour {
         foreach (var item in lines) {
             if (item.IsUsable) result.Add(item);
         }
+
         return result.ToArray();
     }
 }
